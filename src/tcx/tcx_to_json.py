@@ -2,7 +2,6 @@ from pathlib import Path
 import json
 
 
-
 def create_nested_dict(*datas:str) -> dict:
     """
     Take  *args and turn them into a nested dict such as : {"data[0]: {}, "data[1]: {}, etc"}
@@ -32,7 +31,7 @@ def clean_line(line: str, suffix: str) -> str:
     return line_without_suffix
 
 
-def append_data_to_dict(path: Path, data_dict: dict) -> list:
+def append_data_to_dict(path: Path, data_dict: dict) -> dict:
     """
     Append each line to its nested dict
     """
@@ -67,7 +66,7 @@ def dict_to_json_file(d: dict, path:str,   n:int =4) -> None:
         return -1
 
 
-def main():
+def main() ->None:
     """
     Main function of this script.
     """
