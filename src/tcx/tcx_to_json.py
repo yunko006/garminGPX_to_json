@@ -31,7 +31,7 @@ def clean_line(line: str, suffix: str) -> str:
     return line_without_suffix
 
 
-def append_data_to_dict(path: Path, data_dict: dict) -> dict:
+def append_data_to_dict(data_dict: dict, path:Path) -> dict:
     """
     Append each line to its nested dict
     """
@@ -51,7 +51,7 @@ def append_data_to_dict(path: Path, data_dict: dict) -> dict:
 def dict_to_json_file(d: dict, path:str,   n:int =4) -> None:
     """Convert a dict to a json str and then write it to a new file."""
 
-    new_file = Path.cwd() / "src" / "tcx_to_json" / f"{path.stem}.json"
+    new_file = Path(f"{path.stem}.json")
     # print(new_file.exists())
 
     if not new_file.exists():
@@ -70,12 +70,12 @@ def main() ->None:
     """
     Main function of this script.
     """
-    path = str(input('Path du fichier: '))
-    activity_path = Path(f'{path}')
+    #path = str(input('Path du fichier: '))
+    activity_path = Path('activity_7787466259.json')
     # create base dict
     base_dict = create_nested_dict('Time', 'LatitudeDegrees', 'LongitudeDegrees', 'AltitudeMeters', 'DistanceMeters', 'ns3:Speed', 'ns3:RunCadence' )
     # append value to base dict
-    data_dict = append_data_to_dict(activity_path, base_dict)
+    data_dict = append_data_to_dict(base_dict, activity_path)
     # convert base_dict to a new json file
     dict_to_json_file(data_dict, activity_path)
  
