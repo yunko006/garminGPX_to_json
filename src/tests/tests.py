@@ -40,5 +40,5 @@ def test_clean_line():
 def test_append_data_to_dict(get_file, create_dict):
     """ Utilise les fixtures get_file et create_dict pour tester la fonction 
     append_data_to_dict. """
-    test_fct = append_data_to_dict(get_file, create_dict)
+    test_fct = append_data_to_dict(create_dict, get_file)
     assert test_fct == {'Time': {0: '2021-11-08T15:48:52.000Z'}}
